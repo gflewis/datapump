@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_policy_action">
+    <sys_ui_policy_action action="INSERT_OR_UPDATE">
+        <cleared>false</cleared>
+        <disabled>true</disabled>
+        <field>script</field>
+        <mandatory>ignore</mandatory>
+        <sys_class_name>sys_ui_policy_action</sys_class_name>
+        <sys_created_by>gflewis</sys_created_by>
+        <sys_created_on>2021-02-27 19:36:09</sys_created_on>
+        <sys_id>4f77065a2f22601045ea802df699b658</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>script</sys_name>
+        <sys_package display_value="DataPump" source="x_108443_sndml">f2e68ad32f7d60103152c886f699b6fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="DataPump">f2e68ad32f7d60103152c886f699b6fb</sys_scope>
+        <sys_update_name>sys_ui_policy_action_4f77065a2f22601045ea802df699b658</sys_update_name>
+        <sys_updated_by>gflewis</sys_updated_by>
+        <sys_updated_on>2021-02-27 19:36:09</sys_updated_on>
+        <table>x_108443_sndml_action_schedule</table>
+        <ui_policy display_value="Schedule Script readonly">d667825a2f22601045ea802df699b698</ui_policy>
+        <visible>ignore</visible>
+    </sys_ui_policy_action>
+</record_update>

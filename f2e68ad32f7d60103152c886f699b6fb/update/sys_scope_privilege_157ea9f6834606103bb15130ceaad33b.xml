@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_scope_privilege">
+    <sys_scope_privilege action="INSERT_OR_UPDATE">
+        <operation>execute</operation>
+        <source_scope display_value="DataPump">f2e68ad32f7d60103152c886f699b6fb</source_scope>
+        <status>allowed</status>
+        <sys_class_name>sys_scope_privilege</sys_class_name>
+        <sys_created_by>gflewis</sys_created_by>
+        <sys_created_on>2024-05-12 11:39:09</sys_created_on>
+        <sys_id>157ea9f6834606103bb15130ceaad33b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>ScriptableRESTResponse.getStatusCode</sys_name>
+        <sys_package display_value="DataPump" source="x_108443_sndml">f2e68ad32f7d60103152c886f699b6fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="DataPump">f2e68ad32f7d60103152c886f699b6fb</sys_scope>
+        <sys_update_name>sys_scope_privilege_157ea9f6834606103bb15130ceaad33b</sys_update_name>
+        <sys_updated_by>gflewis</sys_updated_by>
+        <sys_updated_on>2024-05-12 11:39:09</sys_updated_on>
+        <target_name>ScriptableRESTResponse.getStatusCode</target_name>
+        <target_scope display_value="Global">global</target_scope>
+        <target_type>scriptable</target_type>
+    </sys_scope_privilege>
+</record_update>

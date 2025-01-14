@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_policy_action">
+    <sys_ui_policy_action action="INSERT_OR_UPDATE">
+        <cleared>true</cleared>
+        <disabled>ignore</disabled>
+        <field>table</field>
+        <mandatory>false</mandatory>
+        <sys_class_name>sys_ui_policy_action</sys_class_name>
+        <sys_created_by>gflewis</sys_created_by>
+        <sys_created_on>2021-02-27 09:18:23</sys_created_on>
+        <sys_id>800a774a2faa201045ea802df699b6d2</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>table</sys_name>
+        <sys_package display_value="DataPump" source="x_108443_sndml">f2e68ad32f7d60103152c886f699b6fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="DataPump">f2e68ad32f7d60103152c886f699b6fb</sys_scope>
+        <sys_update_name>sys_ui_policy_action_800a774a2faa201045ea802df699b6d2</sys_update_name>
+        <sys_updated_by>gflewis</sys_updated_by>
+        <sys_updated_on>2021-02-27 09:32:10</sys_updated_on>
+        <table>x_108443_sndml_table_action</table>
+        <ui_policy display_value="Show Agent and SQL if Execute">84d9f34a2faa201045ea802df699b687</ui_policy>
+        <visible>false</visible>
+    </sys_ui_policy_action>
+</record_update>

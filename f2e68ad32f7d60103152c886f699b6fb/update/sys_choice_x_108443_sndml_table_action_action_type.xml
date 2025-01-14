@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_choice action="INSERT_OR_UPDATE" field="action_type" table="x_108443_sndml_table_action" version="3">
+        <sys_choice_set action="INSERT_OR_UPDATE">
+            <element>action_type</element>
+            <name>x_108443_sndml_table_action</name>
+            <sys_class_name>sys_choice_set</sys_class_name>
+            <sys_created_by>gflewis</sys_created_by>
+            <sys_created_on>2021-01-24 15:28:26</sys_created_on>
+            <sys_id>81c842d72f7d60103152c886f699b6e0</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>action_type</sys_name>
+            <sys_package display_value="DataPump" source="x_108443_sndml">f2e68ad32f7d60103152c886f699b6fb</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="DataPump">f2e68ad32f7d60103152c886f699b6fb</sys_scope>
+            <sys_update_name>sys_choice_x_108443_sndml_table_action_action_type</sys_update_name>
+            <sys_updated_by>gflewis</sys_updated_by>
+            <sys_updated_on>2021-01-24 15:28:26</sys_updated_on>
+        </sys_choice_set>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>action_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Insert</label>
+            <language>en</language>
+            <name>x_108443_sndml_table_action</name>
+            <sequence>0</sequence>
+            <sys_created_by>gflewis</sys_created_by>
+            <sys_created_on>2021-01-24 15:28:45</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>18d84e972f7d60103152c886f699b69e</sys_id>
+            <sys_mod_count>9</sys_mod_count>
+            <sys_updated_by>gflewis</sys_updated_by>
+            <sys_updated_on>2021-03-26 11:34:16</sys_updated_on>
+            <value>insert</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>action_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Upsert</label>
+            <language>en</language>
+            <name>x_108443_sndml_table_action</name>
+            <sequence>1</sequence>
+            <sys_created_by>gflewis</sys_created_by>
+            <sys_created_on>2021-01-24 15:28:57</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>f5d842d72f7d60103152c886f699b6e4</sys_id>
+            <sys_mod_count>8</sys_mod_count>
+            <sys_updated_by>gflewis</sys_updated_by>
+            <sys_updated_on>2021-03-26 11:34:16</sys_updated_on>
+            <value>update</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>action_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Sync</label>
+            <language>en</language>
+            <name>x_108443_sndml_table_action</name>
+            <sequence>2</sequence>
+            <sys_created_by>gflewis</sys_created_by>
+            <sys_created_on>2021-01-24 15:29:08</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>fce80ad72f7d60103152c886f699b6c3</sys_id>
+            <sys_mod_count>4</sys_mod_count>
+            <sys_updated_by>gflewis</sys_updated_by>
+            <sys_updated_on>2021-03-26 11:34:16</sys_updated_on>
+            <value>sync</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>action_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Execute</label>
+            <language>en</language>
+            <name>x_108443_sndml_table_action</name>
+            <sequence>3</sequence>
+            <sys_created_by>gflewis</sys_created_by>
+            <sys_created_on>2021-01-24 15:29:19</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>a3e88ad72f7d60103152c886f699b639</sys_id>
+            <sys_mod_count>4</sys_mod_count>
+            <sys_updated_by>gflewis</sys_updated_by>
+            <sys_updated_on>2021-03-26 11:34:16</sys_updated_on>
+            <value>execute</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>action_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Create</label>
+            <language>en</language>
+            <name>x_108443_sndml_table_action</name>
+            <sequence>4</sequence>
+            <sys_created_by>gflewis</sys_created_by>
+            <sys_created_on>2021-01-24 15:28:26</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>a9b80ad72f7d60103152c886f699b6be</sys_id>
+            <sys_mod_count>2</sys_mod_count>
+            <sys_updated_by>gflewis</sys_updated_by>
+            <sys_updated_on>2021-03-26 11:34:16</sys_updated_on>
+            <value>create</value>
+        </sys_choice>
+    </sys_choice>
+</record_update>

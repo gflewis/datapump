@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="ecc_agent_script_file">
+    <ecc_agent_script_file action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <checksum>64EtX2MBx99AHTnPIi1Duw==</checksum>
+        <description>Bourne shell script to run DataPump job</description>
+        <directory>false</directory>
+        <name>jobrun.sh</name>
+        <parent display_value="DataPump">3171ba13935a4210299e7fbcebba1090</parent>
+        <script># This script executes a single job.&#13;
+# A log file is created based on the job number.&#13;
+# &#13;
+# Edit these three variables before using this script.&#13;
+# Confirm that SNDML_LOGDIR exists and is writable by midserver account.&#13;
+SNDML_JAR=/opt/sndml/sndml-3.5.n-xxxx.jar&#13;
+SNDML_JAR=/opt/sndml/sndml-3.5.0.10-pg.jar&#13;
+SNDML_PROFILE=/opt/sndml/sndml.profile&#13;
+SNDML_LOGDIR=/opt/sndml/log&#13;
+#&#13;
+JOB_SYS_ID=$1&#13;
+JOB_NUMBER=$2&#13;
+SNDML_LOGFILE=$SNDML_LOGDIR/$JOB_NUMBER.log&#13;
+optlog="-Dlog4j2.configurationFile=log4j2-file.xml -Dsndml.logFile=$SNDML_LOGFILE"&#13;
+now=$(date +"%Y-%m-%d %H:%M:%S")&#13;
+echo $now Starting Job $JOB_SYS_ID &#13;
+echo Log file is $SNDML_LOGFILE&#13;
+cmd=" java -ea $optlog -jar $SNDML_JAR --profile $SNDML_PROFILE --jobrun $JOB_SYS_ID"&#13;
+echo $cmd&#13;
+$cmd&#13;
+status=$?&#13;
+now=$(date +"%Y-%m-%d %H:%M:%S")&#13;
+echo $now Exit Status=$status for job $JOB_SYS_ID&#13;
+</script>
+        <script_attachment/>
+        <source/>
+        <sys_class_name>ecc_agent_script_file</sys_class_name>
+        <sys_created_by>gflewis</sys_created_by>
+        <sys_created_on>2024-05-26 16:06:21</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>79a1be13935a4210299e7fbcebba1010</sys_id>
+        <sys_mod_count>35</sys_mod_count>
+        <sys_name>jobrun.sh</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="DataPump" source="x_108443_sndml">f2e68ad32f7d60103152c886f699b6fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="DataPump">f2e68ad32f7d60103152c886f699b6fb</sys_scope>
+        <sys_update_name>ecc_agent_script_file_79a1be13935a4210299e7fbcebba1010</sys_update_name>
+        <sys_updated_by>gflewis</sys_updated_by>
+        <sys_updated_on>2024-09-26 15:35:32</sys_updated_on>
+        <use_attachment>false</use_attachment>
+        <version/>
+    </ecc_agent_script_file>
+</record_update>

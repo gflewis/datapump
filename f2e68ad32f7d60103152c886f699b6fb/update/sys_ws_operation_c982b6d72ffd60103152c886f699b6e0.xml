@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ws_operation">
+    <sys_ws_operation action="INSERT_OR_UPDATE">
+        <active>false</active>
+        <consumes>application/json,application/xml,text/xml</consumes>
+        <consumes_customized>false</consumes_customized>
+        <default_operation_uri/>
+        <enforce_acl>cf9d01d3e73003009d6247e603f6a990</enforce_acl>
+        <http_method>GET</http_method>
+        <name>Get Run List</name>
+        <operation_script><![CDATA[(function process(/*RESTAPIRequest*/ request, /*RESTAPIResponse*/ response) {
+
+	var grAgent = new GlideRecord('x_108443_sndml_database_agent');
+	if (grAgent.get('name', request.pathParams.agent)) {
+		var util = new x_108443_sndml.Util();
+		var runs = [];
+		var grRun = new GlideRecord('x_108443_sndml_action_run');
+		grRun.addQuery('action.database_agent', grAgent.getUniqueValue());
+		grRun.addQuery('status', 'ready');
+		grRun.query();
+		while (grRun.next()) {
+			var json = util.buildJSON(grRun);
+			runs.push(json);
+		}
+		if (runs.length > 0)
+			gs.info(gs.getMessage(
+				'GetRunList {0} {1}', [grAgent.name, JSON.stringify(runs)]));
+		var body = {
+			'agent': grAgent.getUniqueValue(),
+			'agent_name': grAgent.getValue('name'),
+			'runs': runs
+		};
+		gs.info('GetRunList response: ' + JSON.stringify(body));
+		response.setBody(body);	
+		grAgent.last_checkin = new GlideDateTime();
+		grAgent.update();
+	}
+	else {
+		gs.error('GetRunList: Agent Not Found: ' + request.pathParams.agent);
+		response.setStatus(404);
+	}
+
+})(request, response);]]></operation_script>
+        <operation_uri>/api/x_108443_sndml/getrunlist/{agent}</operation_uri>
+        <produces>application/json,application/xml,text/xml</produces>
+        <produces_customized>false</produces_customized>
+        <relative_path>/{agent}</relative_path>
+        <request_example/>
+        <requires_acl_authorization>true</requires_acl_authorization>
+        <requires_authentication>true</requires_authentication>
+        <requires_snc_internal_role>true</requires_snc_internal_role>
+        <short_description/>
+        <sys_class_name>sys_ws_operation</sys_class_name>
+        <sys_created_by>gflewis</sys_created_by>
+        <sys_created_on>2021-01-24 18:31:28</sys_created_on>
+        <sys_id>c982b6d72ffd60103152c886f699b6e0</sys_id>
+        <sys_mod_count>35</sys_mod_count>
+        <sys_name>Get Run List</sys_name>
+        <sys_package display_value="DataPump" source="x_108443_sndml">f2e68ad32f7d60103152c886f699b6fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="DataPump">f2e68ad32f7d60103152c886f699b6fb</sys_scope>
+        <sys_update_name>sys_ws_operation_c982b6d72ffd60103152c886f699b6e0</sys_update_name>
+        <sys_updated_by>gflewis</sys_updated_by>
+        <sys_updated_on>2024-08-11 17:13:30</sys_updated_on>
+        <web_service_definition display_value="GetRunList">6052f2d72ffd60103152c886f699b6ee</web_service_definition>
+        <web_service_version/>
+    </sys_ws_operation>
+</record_update>

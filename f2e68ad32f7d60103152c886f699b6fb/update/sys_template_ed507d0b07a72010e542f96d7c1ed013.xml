@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_template">
+    <sys_template action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <global>true</global>
+        <group/>
+        <groups/>
+        <link_element/>
+        <name>DataPump Job Fail Template</name>
+        <next/>
+        <next_child/>
+        <roles/>
+        <short_description>Generate this incident when a DataPump Job fails</short_description>
+        <show_on_template_bar>true</show_on_template_bar>
+        <stand_alone>false</stand_alone>
+        <sys_class_name>sys_template</sys_class_name>
+        <sys_created_by>gflewis</sys_created_by>
+        <sys_created_on>2021-04-20 18:54:31</sys_created_on>
+        <sys_id>ed507d0b07a72010e542f96d7c1ed013</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>DataPump Job Fail Template</sys_name>
+        <sys_package display_value="DataPump" source="x_108443_sndml">f2e68ad32f7d60103152c886f699b6fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="DataPump">f2e68ad32f7d60103152c886f699b6fb</sys_scope>
+        <sys_update_name>sys_template_ed507d0b07a72010e542f96d7c1ed013</sys_update_name>
+        <sys_updated_by>gflewis</sys_updated_by>
+        <sys_updated_on>2021-04-21 17:54:32</sys_updated_on>
+        <table>incident</table>
+        <template>short_description=DataPump job {1} has failed^description=Number: {1}&#13;
+Job Name: {2}&#13;
+Error Message: &#13;
+{3}^EQ</template>
+        <user/>
+        <view/>
+    </sys_template>
+</record_update>

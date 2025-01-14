@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_section caption="" section_id="7dc753272ff9a0103152c886f699b6e4" sys_domain="global" table="x_108443_sndml_database_agent" version="3" view="">
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>name</element>
+            <position>0</position>
+            <sys_created_by>gflewis</sys_created_by>
+            <sys_created_on>2024-05-26 16:36:51</sys_created_on>
+            <sys_id>7ed87a5b935a4210299e7fbcebba10db</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_108443_sndml_database_agent" sys_domain="global" view="Default view">7dc753272ff9a0103152c886f699b6e4</sys_ui_section>
+            <sys_updated_by>gflewis</sys_updated_by>
+            <sys_updated_on>2024-05-26 16:36:51</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>last_checkin</element>
+            <position>1</position>
+            <sys_created_by>gflewis</sys_created_by>
+            <sys_created_on>2024-05-26 16:36:51</sys_created_on>
+            <sys_id>fed87a5b935a4210299e7fbcebba10db</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_108443_sndml_database_agent" sys_domain="global" view="Default view">7dc753272ff9a0103152c886f699b6e4</sys_ui_section>
+            <sys_updated_by>gflewis</sys_updated_by>
+            <sys_updated_on>2024-05-26 16:36:51</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>job_fail_template</element>
+            <position>2</position>
+            <sys_created_by>gflewis</sys_created_by>
+            <sys_created_on>2024-05-26 16:36:51</sys_created_on>
+            <sys_id>72d87a5b935a4210299e7fbcebba10dc</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_108443_sndml_database_agent" sys_domain="global" view="Default view">7dc753272ff9a0103152c886f699b6e4</sys_ui_section>
+            <sys_updated_by>gflewis</sys_updated_by>
+            <sys_updated_on>2024-05-26 16:36:51</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.split</element>
+            <position>3</position>
+            <sys_created_by>gflewis</sys_created_by>
+            <sys_created_on>2024-05-26 16:36:51</sys_created_on>
+            <sys_id>f2d87a5b935a4210299e7fbcebba10dc</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_108443_sndml_database_agent" sys_domain="global" view="Default view">7dc753272ff9a0103152c886f699b6e4</sys_ui_section>
+            <sys_updated_by>gflewis</sys_updated_by>
+            <sys_updated_on>2024-05-26 16:36:51</sys_updated_on>
+            <sys_user/>
+            <type>.split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>action_run_autostart</element>
+            <position>4</position>
+            <sys_created_by>gflewis</sys_created_by>
+            <sys_created_on>2024-05-26 16:36:51</sys_created_on>
+            <sys_id>76d87a5b935a4210299e7fbcebba10dc</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_108443_sndml_database_agent" sys_domain="global" view="Default view">7dc753272ff9a0103152c886f699b6e4</sys_ui_section>
+            <sys_updated_by>gflewis</sys_updated_by>
+            <sys_updated_on>2024-05-26 16:36:51</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>http_server_host</element>
+            <position>5</position>
+            <sys_created_by>gflewis</sys_created_by>
+            <sys_created_on>2024-05-26 16:36:51</sys_created_on>
+            <sys_id>f6d87a5b935a4210299e7fbcebba10dc</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_108443_sndml_database_agent" sys_domain="global" view="Default view">7dc753272ff9a0103152c886f699b6e4</sys_ui_section>
+            <sys_updated_by>gflewis</sys_updated_by>
+            <sys_updated_on>2024-05-26 16:36:51</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>http_server_port</element>
+            <position>6</position>
+            <sys_created_by>gflewis</sys_created_by>
+            <sys_created_on>2024-05-26 16:36:51</sys_created_on>
+            <sys_id>7ad87a5b935a4210299e7fbcebba10dc</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_108443_sndml_database_agent" sys_domain="global" view="Default view">7dc753272ff9a0103152c886f699b6e4</sys_ui_section>
+            <sys_updated_by>gflewis</sys_updated_by>
+            <sys_updated_on>2024-05-26 16:36:51</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>mid_server</element>
+            <position>7</position>
+            <sys_created_by>gflewis</sys_created_by>
+            <sys_created_on>2024-05-26 16:36:51</sys_created_on>
+            <sys_id>fad87a5b935a4210299e7fbcebba10dc</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_108443_sndml_database_agent" sys_domain="global" view="Default view">7dc753272ff9a0103152c886f699b6e4</sys_ui_section>
+            <sys_updated_by>gflewis</sys_updated_by>
+            <sys_updated_on>2024-05-26 16:36:51</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>mid_server_interpreter</element>
+            <position>8</position>
+            <sys_created_by>gflewis</sys_created_by>
+            <sys_created_on>2024-05-26 16:36:51</sys_created_on>
+            <sys_id>7ed87a5b935a4210299e7fbcebba10dc</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_108443_sndml_database_agent" sys_domain="global" view="Default view">7dc753272ff9a0103152c886f699b6e4</sys_ui_section>
+            <sys_updated_by>gflewis</sys_updated_by>
+            <sys_updated_on>2024-05-26 16:36:51</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>mid_server_script_file</element>
+            <position>9</position>
+            <sys_created_by>gflewis</sys_created_by>
+            <sys_created_on>2024-05-26 16:36:51</sys_created_on>
+            <sys_id>fed87a5b935a4210299e7fbcebba10dc</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_108443_sndml_database_agent" sys_domain="global" view="Default view">7dc753272ff9a0103152c886f699b6e4</sys_ui_section>
+            <sys_updated_by>gflewis</sys_updated_by>
+            <sys_updated_on>2024-05-26 16:36:51</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_section action="INSERT_OR_UPDATE">
+            <caption/>
+            <header>false</header>
+            <name>x_108443_sndml_database_agent</name>
+            <roles/>
+            <sys_class_name>sys_ui_section</sys_class_name>
+            <sys_created_by>gflewis</sys_created_by>
+            <sys_created_on>2021-01-25 15:52:07</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>7dc753272ff9a0103152c886f699b6e4</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>x_108443_sndml_database_agent</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="DataPump" source="x_108443_sndml">f2e68ad32f7d60103152c886f699b6fb</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="DataPump">f2e68ad32f7d60103152c886f699b6fb</sys_scope>
+            <sys_update_name>sys_ui_section_7dc753272ff9a0103152c886f699b6e4</sys_update_name>
+            <sys_updated_by>gflewis</sys_updated_by>
+            <sys_updated_on>2021-01-25 15:52:07</sys_updated_on>
+            <sys_user/>
+            <title>true</title>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_section>
+    </sys_ui_section>
+</record_update>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>false</action_insert>
+        <action_query>false</action_query>
+        <action_update>true</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>x_108443_sndml_action_schedule</collection>
+        <condition/>
+        <description>Block update to Schedule Agent if Schedule has related jobs</description>
+        <execute_function>false</execute_function>
+        <filter_condition table="x_108443_sndml_action_schedule">database_agentVALCHANGES^EQ<item endquery="false" field="database_agent" goto="false" newquery="false" operator="VALCHANGES" or="false" value=""/>
+            <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
+        </filter_condition>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>Schedule Agent Change</name>
+        <order>100</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
+
+	var grJob = new GlideRecord('x_108443_sndml_table_action');
+	grJob.addQuery('schedule', current.getUniqueValue());
+	grJob.query();
+	while (grJob.next()) {
+		if (grJob.database_agent != current.database_agent) {
+			gs.addErrorMessage("Cannot change Agent. Schedule has related jobs.");
+			current.setAbortAction(true);
+			return;
+		}		
+	}
+
+})(current, previous);]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>gflewis</sys_created_by>
+        <sys_created_on>2021-03-19 11:08:57</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>36b213a42f8f201045ea802df699b659</sys_id>
+        <sys_mod_count>6</sys_mod_count>
+        <sys_name>Schedule Agent Change</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="DataPump" source="x_108443_sndml">f2e68ad32f7d60103152c886f699b6fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="DataPump">f2e68ad32f7d60103152c886f699b6fb</sys_scope>
+        <sys_update_name>sys_script_36b213a42f8f201045ea802df699b659</sys_update_name>
+        <sys_updated_by>gflewis</sys_updated_by>
+        <sys_updated_on>2021-03-19 11:34:33</sys_updated_on>
+        <template/>
+        <when>before</when>
+    </sys_script>
+    <sys_translated_text action="delete_multiple" query="documentkey=36b213a42f8f201045ea802df699b659"/>
+</record_update>

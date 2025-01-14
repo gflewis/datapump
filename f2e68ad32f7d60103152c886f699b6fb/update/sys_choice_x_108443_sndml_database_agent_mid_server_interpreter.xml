@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_choice action="INSERT_OR_UPDATE" field="mid_server_interpreter" table="x_108443_sndml_database_agent" version="3">
+        <sys_choice_set action="INSERT_OR_UPDATE">
+            <element>mid_server_interpreter</element>
+            <name>x_108443_sndml_database_agent</name>
+            <sys_class_name>sys_choice_set</sys_class_name>
+            <sys_created_by>gflewis</sys_created_by>
+            <sys_created_on>2024-05-26 16:37:13</sys_created_on>
+            <sys_id>08f8f61b935a4210299e7fbcebba1036</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>mid_server_interpreter</sys_name>
+            <sys_package display_value="DataPump" source="x_108443_sndml">f2e68ad32f7d60103152c886f699b6fb</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="DataPump">f2e68ad32f7d60103152c886f699b6fb</sys_scope>
+            <sys_update_name>sys_choice_x_108443_sndml_database_agent_mid_server_interpreter</sys_update_name>
+            <sys_updated_by>gflewis</sys_updated_by>
+            <sys_updated_on>2024-05-26 16:37:13</sys_updated_on>
+        </sys_choice_set>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>mid_server_interpreter</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Linux</label>
+            <language>en</language>
+            <name>x_108443_sndml_database_agent</name>
+            <sequence>0</sequence>
+            <synonyms/>
+            <sys_created_by>gflewis</sys_created_by>
+            <sys_created_on>2024-05-26 16:37:13</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>80f8f61b935a4210299e7fbcebba1036</sys_id>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_updated_by>gflewis</sys_updated_by>
+            <sys_updated_on>2024-05-26 16:38:40</sys_updated_on>
+            <value>/bin/sh</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>mid_server_interpreter</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Windows</label>
+            <language>en</language>
+            <name>x_108443_sndml_database_agent</name>
+            <sequence>1</sequence>
+            <synonyms/>
+            <sys_created_by>gflewis</sys_created_by>
+            <sys_created_on>2024-05-26 16:39:00</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>de59729b935a4210299e7fbcebba105e</sys_id>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_updated_by>gflewis</sys_updated_by>
+            <sys_updated_on>2024-05-26 16:39:19</sys_updated_on>
+            <value>powershell</value>
+        </sys_choice>
+    </sys_choice>
+</record_update>

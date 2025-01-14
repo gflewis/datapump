@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_108443_sndml.Schedule</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>Schedule</name>
+        <script><![CDATA[var Schedule = Class.create();
+Schedule.prototype = {
+    initialize: function() {
+    },
+
+	runSchedule: function(idSchedule) {
+		var grSchedule = new GlideRecord('x_108443_sndml_action_schedule');
+		grSchedule.get(idSchedule);
+		gs.info(gs.getMessage(
+			"Starting schedule {0} for agent {1}", 
+			[grSchedule.getDisplayValue(), grSchedule.database_agent.getDisplayValue()]));
+		var start = new GlideDateTime();
+		var grSchRun = new GlideRecord('x_108443_sndml_schedule_run');
+		grSchRun.newRecord();
+		grSchRun.schedule = idSchedule;
+		var idSchRun = grSchRun.insert();
+		var runList = [];
+		var lowOrder = null;
+		var grJob = new GlideRecord('x_108443_sndml_table_action');
+		grJob.addQuery('schedule', idSchedule);
+		grJob.addQuery('active', true);
+		grJob.orderBy('order');
+		grJob.query();
+		while (grJob.next()) {
+			if (lowOrder == null) lowOrder = parseInt(grJob.order);
+			var grJobRun = new GlideRecord('x_108443_sndml_action_run');
+			grJobRun.newRecord();
+			grJobRun.action = grJob.getUniqueValue();
+			grJobRun.run_start = start;
+			grJobRun.schedule_run = idSchRun;
+			if (parseInt(grJob.order) == lowOrder)
+				grJobRun.status = 'ready';
+			else
+				grJobRun.status = 'scheduled';
+			var idActRun = grJobRun.insert();
+			runList.push(idActRun);
+		}
+	},
+
+	checkSchedule: function(idSchRun) {
+		var lowOrder = null;
+		var grJobRun = new GlideRecord('x_108443_sndml_action_run');
+		grJobRun.addQuery('schedule_run', idSchRun);
+		grJobRun.addQuery('active', true);
+		grJobRun.orderBy('action.order');
+		grJobRun.query();
+		while (grJobRun.next()) {
+			if (lowOrder == null) lowOrder = parseInt(grJobRun.action.order);
+			if (parseInt(grJobRun.action.order) == lowOrder && grJobRun.status == 'scheduled') {
+				grJobRun.status = 'ready';
+				grJobRun.update();
+			}
+		}
+	},
+
+    type: 'Schedule'
+};
+]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>gflewis</sys_created_by>
+        <sys_created_on>2021-02-26 20:33:08</sys_created_on>
+        <sys_id>cbeac1c22f2620103152c886f699b6a6</sys_id>
+        <sys_mod_count>8</sys_mod_count>
+        <sys_name>Schedule</sys_name>
+        <sys_package display_value="DataPump" source="x_108443_sndml">f2e68ad32f7d60103152c886f699b6fb</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="DataPump">f2e68ad32f7d60103152c886f699b6fb</sys_scope>
+        <sys_update_name>sys_script_include_cbeac1c22f2620103152c886f699b6a6</sys_update_name>
+        <sys_updated_by>gflewis</sys_updated_by>
+        <sys_updated_on>2021-03-19 11:49:12</sys_updated_on>
+    </sys_script_include>
+</record_update>

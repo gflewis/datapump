@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_embedded_help_role">
+    <sys_embedded_help_role action="INSERT_OR_UPDATE">
+        <order>1000</order>
+        <role display_value="x_108443_sndml.daemon" name="x_108443_sndml.daemon">da057da32ff5a0103152c886f699b6d5</role>
+        <sys_class_name>sys_embedded_help_role</sys_class_name>
+        <sys_created_by>gflewis</sys_created_by>
+        <sys_created_on>2021-01-25 08:40:50</sys_created_on>
+        <sys_id>4415b9232ff5a0103152c886f699b6ad</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>da057da32ff5a0103152c886f699b6d5</sys_name>
+        <sys_package display_value="DataPump" source="x_108443_sndml">f2e68ad32f7d60103152c886f699b6fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="DataPump">f2e68ad32f7d60103152c886f699b6fb</sys_scope>
+        <sys_update_name>sys_embedded_help_role_4415b9232ff5a0103152c886f699b6ad</sys_update_name>
+        <sys_updated_by>gflewis</sys_updated_by>
+        <sys_updated_on>2021-01-25 08:40:50</sys_updated_on>
+    </sys_embedded_help_role>
+</record_update>

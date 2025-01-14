@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_108443_sndml.TableSchema</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>TableSchema</name>
+        <script><![CDATA[var TableSchema = Class.create();
+TableSchema.prototype = {
+    initialize: function() {
+    },
+	
+	getSchema: function(tablename) {
+		var stringCompare = function(a, b) {
+			if (a.name > b.name) return 1;
+			if (a.name < b.name) return -1;
+			return 0;
+		};		
+		var list = [];
+		var grDbo = new GlideRecord('sys_db_object');
+		grDbo.addQuery('name', tablename);
+		grDbo.query();
+		if (grDbo.next()) {
+			var hash = this.getTableDefinition(grDbo);
+			for (fieldname in hash) {
+				list.push(hash[fieldname]);
+			}
+		}
+		list.sort(stringCompare);
+		return list;
+	},
+	
+	getTableDefinition: function(grDbo) {
+		var hash = {};
+		var tablename = grDbo.getValue('name');
+		var grDict = new GlideRecord('sys_dictionary');
+		grDict.addQuery('name', tablename);
+		grDict.addNotNullQuery('element');
+		grDict.addActiveQuery();
+		grDict.query();
+		while (grDict.next()) {
+			var fieldname = grDict.getValue('element');
+			var fieldDef = {
+				name: fieldname,
+				type: grDict.getValue('internal_type'),
+				len: grDict.getValue('max_length'),
+				ref: grDict.getValue('reference')
+			};
+			hash[fieldname] = fieldDef;
+		}
+		if (grDbo.super_class) {
+			var grParent = grDbo.super_class.getRefRecord();
+			var parentHash = this.getTableDefinition(grParent);
+			for (fieldname in parentHash) {
+				hash[fieldname] = parentHash[fieldname];
+			}
+		}
+		return hash;
+	},
+	
+    type: 'TableSchema'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>gflewis</sys_created_by>
+        <sys_created_on>2021-03-22 15:05:57</sys_created_on>
+        <sys_id>2cbd972d1bc72010ff8e7596cc4bcb42</sys_id>
+        <sys_mod_count>14</sys_mod_count>
+        <sys_name>TableSchema</sys_name>
+        <sys_package display_value="DataPump" source="x_108443_sndml">f2e68ad32f7d60103152c886f699b6fb</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="DataPump">f2e68ad32f7d60103152c886f699b6fb</sys_scope>
+        <sys_update_name>sys_script_include_2cbd972d1bc72010ff8e7596cc4bcb42</sys_update_name>
+        <sys_updated_by>gflewis</sys_updated_by>
+        <sys_updated_on>2021-03-22 17:35:28</sys_updated_on>
+    </sys_script_include>
+</record_update>

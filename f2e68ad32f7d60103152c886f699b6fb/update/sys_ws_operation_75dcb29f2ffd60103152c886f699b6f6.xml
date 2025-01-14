@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ws_operation">
+    <sys_ws_operation action="INSERT_OR_UPDATE">
+        <active>false</active>
+        <consumes>application/json,application/xml,text/xml</consumes>
+        <consumes_customized>false</consumes_customized>
+        <default_operation_uri/>
+        <enforce_acl>cf9d01d3e73003009d6247e603f6a990</enforce_acl>
+        <http_method>PUT</http_method>
+        <name>PutRunStatus</name>
+        <operation_script><![CDATA[(function process(/*RESTAPIRequest*/ request, /*RESTAPIResponse*/ response) {
+
+	var data = request.body.data;
+	gs.info('PutRunStatus request: ' + JSON.stringify(data));
+	var idRun = data.sys_id;	
+	var grRun = new GlideRecord('x_108443_sndml_action_run');
+	if (!idRun || !grRun.get(idRun)) {
+		response.setStatus(404); // Not Found
+	}
+	else {
+		var result = new x_108443_sndml.Util().putRunStatus(idRun, data);
+		response.setBody(result);
+		gs.debug('PutRunStatus response: ' + JSON.stringify(result));
+		// check that the status was actually updated
+		if (data.status && !data.status.equalsIgnoreCase(result.status)) {
+			response.setStatus(403); // Forbidden
+			gs.error(gs.getMessage(
+				'PutRunStatus NOT UPDATED {0}', [data.sys_id]));
+		}
+		else {
+			response.setStatus(200);
+		}		
+	}
+
+})(request, response);]]></operation_script>
+        <operation_uri>/api/x_108443_sndml/putrunstatus</operation_uri>
+        <produces>application/json,application/xml,text/xml</produces>
+        <produces_customized>false</produces_customized>
+        <relative_path>/</relative_path>
+        <request_example/>
+        <requires_acl_authorization>true</requires_acl_authorization>
+        <requires_authentication>true</requires_authentication>
+        <requires_snc_internal_role>true</requires_snc_internal_role>
+        <short_description/>
+        <sys_class_name>sys_ws_operation</sys_class_name>
+        <sys_created_by>gflewis</sys_created_by>
+        <sys_created_on>2021-01-24 19:16:11</sys_created_on>
+        <sys_id>75dcb29f2ffd60103152c886f699b6f6</sys_id>
+        <sys_mod_count>32</sys_mod_count>
+        <sys_name>PutRunStatus</sys_name>
+        <sys_package display_value="DataPump" source="x_108443_sndml">f2e68ad32f7d60103152c886f699b6fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="DataPump">f2e68ad32f7d60103152c886f699b6fb</sys_scope>
+        <sys_update_name>sys_ws_operation_75dcb29f2ffd60103152c886f699b6f6</sys_update_name>
+        <sys_updated_by>gflewis</sys_updated_by>
+        <sys_updated_on>2024-08-11 17:12:54</sys_updated_on>
+        <web_service_definition display_value="PutRunStatus">f2ccb29f2ffd60103152c886f699b6f3</web_service_definition>
+        <web_service_version/>
+    </sys_ws_operation>
+</record_update>

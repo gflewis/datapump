@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="min_rows" label="Min Rows" language="en" table="x_108443_sndml_table_action">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>min_rows</element>
+            <help/>
+            <hint>An error will be reported if the number of records processed is less than this value.</hint>
+            <label>Min Rows</label>
+            <language>en</language>
+            <name>x_108443_sndml_table_action</name>
+            <plural>Min Rows</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>gflewis</sys_created_by>
+            <sys_created_on>2021-04-20 14:17:41</sys_created_on>
+            <sys_id>9341fc0307272010e542f96d7c1ed09c</sys_id>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_name>Min Rows</sys_name>
+            <sys_package display_value="DataPump" source="x_108443_sndml">f2e68ad32f7d60103152c886f699b6fb</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="DataPump">f2e68ad32f7d60103152c886f699b6fb</sys_scope>
+            <sys_update_name>sys_documentation_x_108443_sndml_table_action_min_rows_en</sys_update_name>
+            <sys_updated_by>gflewis</sys_updated_by>
+            <sys_updated_on>2021-04-20 14:20:43</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

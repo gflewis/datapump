@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_108443_sndml.Util</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>Util</name>
+        <script><![CDATA[var Util = Class.create();
+Util.prototype = {
+    initialize: function(start) {
+		this.start = start || new GlideDateTime();
+    },
+
+	actionExecuteNow: function(grJob) {
+		var grAgent = grJob.table.database_agent.getRefRecord();
+		var grRun = new GlideRecord('x_108443_sndml_action_run');
+		grRun.newRecord();
+		grRun.action = grJob.getUniqueValue();
+		grRun.status = 'ready';
+		grRun.run_start = this.start;		
+		var sys_id = grRun.insert();
+		return grRun;
+	},
+
+	hasFailed: function(grJob) {
+		if (!grJob.table) return false;
+		var grTable = grJob.table.getRefRecord();
+		if (!grTable.current_run) return false;
+		var grRun = grTable.current_run.getRefRecord();
+		var status = grRun.getValue('status');
+		if (status == 'failed') return true;
+		return false;
+	},
+
+	actionClearFailure: function(grJob) {
+		var grTable = grJob.table.getRefRecord();
+		this.clearCurrentRun(grTable);
+	},
+
+	clearCurrentRun: function(grTable) {
+		if (grTable.current_run) {
+			gs.info(gs.getMessage(
+				"Clear current run {0} for job {1}", 
+				[grTable.current_run.number, grTable.getDisplayValue()]));
+		}
+		grTable.current_run = '';
+		grTable.current_run_start = '';
+		grTable.update();
+	},
+
+	beforeInsertRun: function(grRun) {
+		grRun.json = JSON.stringify(this.buildJSON(grRun, false));
+	},
+
+	afterUpdateRunStatus: function(grRun, grRunOld) {
+		var grJob = grRun.action.getRefRecord();
+		var grTable = grJob.table ? grJob.table.getRefRecord() : null;
+		gs.info(gs.getMessage(
+			'afterUpdateRunStatus {0} {1}',
+			[grRun.number, grRun.status]));
+		var status = grRun.getValue('status');
+		if (grTable) {
+			switch (status) {
+				case 'scheduled':
+				case 'ready':
+				case 'prepare':
+					grTable.current_run = grRun.getUniqueValue();
+					grTable.current_run_start = grRun.run_start;
+					grTable.update();
+					break;
+				case 'complete':
+					grTable.last_run = grRun.getUniqueValue();
+					grTable.last_run_start = grRun.run_start;
+					grTable.current_run = '';
+					grTable.current_run_start = '';
+					grTable.update();
+					break;
+				case 'cancelled':
+					grTable.current_run = '';
+					grTable.current_run_start = '';
+					grTable.update();
+					break;
+				case 'failed':
+					this.createIncident(grRun);
+					break;
+				default:
+					break;
+			}
+		}
+		if (grRun.schedule_run) {
+			var schUtil = new x_108443_sndml.Schedule();
+			schUtil.checkSchedule(grRun.schedule_run);
+		}
+	},
+
+	createIncident: function(grRun) {
+		var grJob = grRun.action.getRefRecord();
+		var grAgent = grJob.database_agent.getRefRecord();
+		if (grAgent.job_fail_template) {
+			var grTemplate = grAgent.job_fail_template.getRefRecord();
+			var template = GlideTemplate.get(grTemplate.getUniqueValue());
+			var grIncident = new GlideRecord(grTemplate.table);
+			grIncident.newRecord();
+			template.apply(grIncident);
+			/* 
+			Replace values in Short Description and Description as follows:
+			{0} sys_id
+			{1} number
+			{2} job name
+			{3} error message
+			*/ 
+			var params = [
+				grRun.getUniqueValue(),	grRun.getValue('number'),
+				grJob.getValue('name'),	grRun.getValue('status_message')];
+			var oldShortDescription = grIncident.getValue('short_description');
+			var newShortDescription = gs.getMessage(oldShortDescription, params);
+			var oldDescription = grIncident.getValue('description');
+			var newDescription = gs.getMessage(oldDescription, params);
+			grIncident.setValue('short_description', newShortDescription);
+			grIncident.setValue('description', newDescription);
+			grIncident.insert();
+			gs.info(
+				'{0} created for failure of {1} {2}',
+				grIncident.number, grRun.number, grJob.name);
+		}
+		else {
+			gs.info('{0} has failed', grRun.number);
+		}
+	},
+	
+	// Called from Web Service to update status and metrics
+	putRunStatus: function(idRun, data) {
+		grRun = new GlideRecord('x_108443_sndml_action_run');
+		var partName = data.part_name; // empty unless partitioned
+		grRun.get(idRun);
+		var runCounters = ['expected', 'inserted', 'updated', 'deleted', 'skipped'];
+		var logCounters = ['inserted', 'updated', 'deleted', 'skipped'];
+		if (!partName) {
+			var newStatus = data.status.toLowerCase();
+			grRun.setValue('status', newStatus);
+			if (data.elapsed) grRun.setValue('elapsed_seconds', data.elapsed);
+		}
+		if (data.message) grRun.setValue('status_message', data.message);
+		this.updateCounters(grRun, data, runCounters);
+		grRun.update();
+		var idRunPart = partName ? this.putPartRunStatus(idRun, data) : null;
+		if (this.hasCounters(data, logCounters)) {
+			var grLog = new GlideRecord('x_108443_sndml_action_run_log');
+			grLog.newRecord();
+			grLog.setValue('action_run', idRun);
+			this.updateCounters(grLog, data, logCounters);
+			if (idRunPart) grLog.setValue('run_part', idRunPart);
+			grLog.insert();
+		}
+		// Read the record back and send the results
+		grResult = new GlideRecord('x_108443_sndml_action_run');
+		grResult.get(idRun);
+		var result = this.buildJSON(grResult, true);
+		return result;
+	},
+
+	putPartRunStatus: function(idRun, data) {
+		var runCounters = ['expected', 'inserted', 'updated', 'deleted', 'skipped'];
+		var partName = data.part_name;
+		var partStatus = data.part_status.toLowerCase();
+		var grRunPart = new GlideRecord('x_108443_sndml_action_run_part');
+		var idRunPart;
+		grRunPart.addQuery('action_run', idRun);
+		grRunPart.addQuery('part_name', partName);
+		grRunPart.query();
+		if (grRunPart.next()) {
+			idRunPart = grRunPart.getUniqueValue();
+			grRunPart.status = partStatus;
+			if (data.part_elapsed) grRunPart.setValue('elapsed_seconds', data.elapsed);	
+			this.updatePartCounters(grRunPart, data, runCounters);
+			grRunPart.update();
+		}
+		else {
+			grRunPart.newRecord();
+			grRunPart.action_run = idRun;
+			grRunPart.part_name = partName;
+			grRunPart.status = partStatus;
+			this.updatePartCounters(grRunPart, data, runCounters);
+			idRunPart = grRunPart.insert();
+		}
+		return idRunPart;
+	},
+
+	updatePartCounters: function(grRunPart, counters, names) {
+		names.forEach(function(name) {
+			var srcname = 'part_' + name;
+			var tgtname = 'records_' + name;
+			if (srcname in counters) {
+				var fieldvalue = parseInt(counters[srcname]);
+				grRunPart.setValue(tgtname, fieldvalue);
+			}
+		});
+	},
+
+	hasCounters: function(counters, names) {
+		var result = false;
+		names.forEach(function(name) {
+			if (name in counters) result = true;
+		});
+		return result;
+	},
+
+	updateCounters: function(gr, counters, names) {
+		names.forEach(function(name) {
+			if (name in counters) {
+				var fieldname = 'records_' + name;
+				var fieldvalue = parseInt(counters[name]);
+				gr.setValue(fieldname, fieldvalue);
+			}
+		});
+	},
+
+	buildJSON: function(grRun, include_counters) {
+		var grJob = new GlideRecord('x_108443_sndml_table_action');
+		grJob.get(grRun.action);
+		var grTable = grJob.table ? grJob.table.getRefRecord() : null;
+		// Java uses upper case enums
+		var action = grJob.getValue('action_type').toUpperCase();
+		var status = grRun.getValue('status').toUpperCase();
+		var obj = {
+			runkey: grRun.getUniqueValue(),
+			number: grRun.getValue('number'),
+			action: action,
+			status: status,
+			start: grRun.getValue('run_start'),
+		};
+		if (grTable) {
+			obj.source = grTable.getValue('source_table');
+			obj.target = grTable.getValue('target_table');
+			if (action.equalsIgnoreCase('INSERT') && grJob.truncate) {
+				obj.truncate = true;
+			}
+			if (grJob.since_last) {
+				if (grTable.last_run_start) {
+					obj.since = grTable.getValue('last_run_start');
+				}
+			}
+		}
+		if (action.equalsIgnoreCase('EXECUTE')) {
+			obj.sql = grJob.getValue('sql');
+		}
+		else {
+			// For insert, update, sync, create
+			if (grTable.page_size)
+				obj.pagesize = grTable.getValue('page_size');
+			if (grTable.created_start || grTable.created_until)
+				obj.created = this.buildDateRange(grTable.created_start, grTable.created_until);
+			if (grTable.filter)
+				obj.filter = grTable.getValue('filter');
+			if (grTable.columns)
+				obj.columns = grTable.getValue('columns');
+			if (!action.equalsIgnoreCase('CREATE')) {
+				// For insert, update, sync
+				if (grTable.page_size)
+					obj.pagesize = grTable.getValue('page_size');
+				if (!grJob.min_rows.nil())
+					obj.minrows = parseInt(grJob.getValue('min_rows'));
+				if (!grJob.max_rows.nil())
+					obj.maxrows = parseInt(grJob.getValue('max_rows'));				
+				if (grJob.partition) {
+					obj.partition = grJob.getValue('partition');
+					if (grJob.threads) {
+						obj.threads = parseInt(grJob.getValue('threads'));
+					}
+				}
+			}
+		}
+		if (include_counters) {
+			obj.records_expected = grRun.getValue('records_expected');
+			obj.records_inserted = grRun.getValue('records_inserted');
+			obj.records_updated  = grRun.getValue('records_updated');
+			obj.records_deleted  = grRun.getValue('records_deleted');
+			obj.records_skipped  = grRun.getValue('records_skipped');
+		}
+		return obj;
+	},
+
+	buildDateRange: function(start, until) {
+		var range = ['void'];
+		if (start) range[0] = start.toString();
+		if (until) range[1] = until.toString();
+		return range;
+	},
+
+    type: 'Util'
+};
+]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>gflewis</sys_created_by>
+        <sys_created_on>2021-01-24 21:18:35</sys_created_on>
+        <sys_id>1ee617132f71a0103152c886f699b60e</sys_id>
+        <sys_mod_count>129</sys_mod_count>
+        <sys_name>Util</sys_name>
+        <sys_package display_value="DataPump" source="x_108443_sndml">f2e68ad32f7d60103152c886f699b6fb</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="DataPump">f2e68ad32f7d60103152c886f699b6fb</sys_scope>
+        <sys_update_name>sys_script_include_1ee617132f71a0103152c886f699b60e</sys_update_name>
+        <sys_updated_by>gflewis</sys_updated_by>
+        <sys_updated_on>2024-09-23 10:56:21</sys_updated_on>
+    </sys_script_include>
+</record_update>

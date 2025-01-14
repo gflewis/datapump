@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_choice action="INSERT_OR_UPDATE" field="action_run_autostart" table="x_108443_sndml_database_agent" version="3">
+        <sys_choice_set action="INSERT_OR_UPDATE">
+            <element>action_run_autostart</element>
+            <name>x_108443_sndml_database_agent</name>
+            <sys_class_name>sys_choice_set</sys_class_name>
+            <sys_created_by>gflewis</sys_created_by>
+            <sys_created_on>2024-05-12 16:41:08</sys_created_on>
+            <sys_id>0593ba3e838a06103bb15130ceaad3c3</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>action_run_autostart</sys_name>
+            <sys_package display_value="DataPump" source="x_108443_sndml">f2e68ad32f7d60103152c886f699b6fb</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="DataPump">f2e68ad32f7d60103152c886f699b6fb</sys_scope>
+            <sys_update_name>sys_choice_x_108443_sndml_database_agent_action_run_autostart</sys_update_name>
+            <sys_updated_by>gflewis</sys_updated_by>
+            <sys_updated_on>2024-05-12 16:41:08</sys_updated_on>
+        </sys_choice_set>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>action_run_autostart</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>HTTP Server</label>
+            <language>en</language>
+            <name>x_108443_sndml_database_agent</name>
+            <sequence>10</sequence>
+            <synonyms/>
+            <sys_created_by>gflewis</sys_created_by>
+            <sys_created_on>2024-05-12 16:41:08</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>7b73fa3e838a06103bb15130ceaad360</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>gflewis</sys_updated_by>
+            <sys_updated_on>2024-05-12 16:41:08</sys_updated_on>
+            <value>http_server</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>action_run_autostart</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>MID Server</label>
+            <language>en</language>
+            <name>x_108443_sndml_database_agent</name>
+            <sequence>20</sequence>
+            <synonyms/>
+            <sys_created_by>gflewis</sys_created_by>
+            <sys_created_on>2024-05-12 16:41:27</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>8f93f63e838a06103bb15130ceaad32b</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>gflewis</sys_updated_by>
+            <sys_updated_on>2024-05-12 16:41:27</sys_updated_on>
+            <value>mid_server</value>
+        </sys_choice>
+    </sys_choice>
+</record_update>
