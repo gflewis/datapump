@@ -90,11 +90,11 @@ Otherwise, it will be inserted.
 If Since Last is checked, then only records inserted or updated in ServiceNow since the last run 
 will be processed. The following filter will be used when retrieving records from ServiceNow:
 
-<code>
-sys_updated_on>=<i>lastrunstart</i>
-</code>
+> <code>sys_updated_on>=<i>lastrunstart</i></code>
 
-where _lastrunstart_ is determined from the "Last Run Start" field on the Database Table record.
+where 
+_lastrunstart_ 
+is determined from the "Last Run Start" field on the Database Table record.
 
 ### Sync
 "Sync" compares the timestamps (sys_updated_on) in the source and target tables. 
