@@ -71,4 +71,39 @@ reader.password=******
 Since the connection profile contains passwords, 
 it should be in a secure location on your Linux or Windows server.
 
+## Action Types
+There are several types of jobs.
+
+### Insert
+"Insert" is used for initial loading or reloading of SQL tables. 
+It inserts rows into the target table. 
+If a record with the same sys_id already exists in the target table, 
+then a primary key violation will occur and the row will be skipped.
+
+If Truncate is checked, then the SQL table will be truncated prior to the load.
+
+### Upsert
+"Upsert" is used to load or update SQL tables. 
+If the target record exists (based on sys_id), then it will be updated. 
+Otherwise, it will be inserted.
+
+If Since Last is checked, then only records inserted or updated in ServiceNow since the last run 
+will be processed. The following filter will be used when retrieving records from ServiceNow:
+
+<code>
+sys_updated_on>=<i>lastrunstart</i>
+</code>
+
+where _lastrunstart_ is determined from the "Last Run Start" field on the Database Table record.
+
+### Sync
+"Sync" compares the timestamps (sys_updated_on) in the source and target tables. 
+Based on this comparison it will insert, update or delete target records. 
+If the values of sys_updated_on match, then the record will be skipped.
+
+If a Filter has been configured for the Database Table, 
+the Sync will delete any records which do not match the filter.
+
+### Execute
+"Execute" executes an arbitrary SQL statement. This is typically used to run a database stored procedure.
 
