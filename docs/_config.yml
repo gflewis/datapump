@@ -5,7 +5,8 @@ safe: true
 source: docs
 incremental: false
 highlighter: rouge
-show_downloads: false
+github:
+  is_project_page: false
 gist:
   noscript: false
 kramdown:
