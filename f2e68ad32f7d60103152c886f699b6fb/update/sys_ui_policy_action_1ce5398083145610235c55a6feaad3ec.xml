@@ -3,6 +3,8 @@
         <cleared>false</cleared>
         <disabled>ignore</disabled>
         <field>mid_server</field>
+        <field_message/>
+        <field_message_type/>
         <mandatory>true</mandatory>
         <sys_class_name>sys_ui_policy_action</sys_class_name>
         <sys_created_by>gflewis</sys_created_by>
@@ -18,6 +20,9 @@
         <sys_updated_on>2024-08-23 19:29:39</sys_updated_on>
         <table>x_108443_sndml_database_agent</table>
         <ui_policy display_value="Autostart MID Server fields">b2d7f21b935a4210299e7fbcebba1021</ui_policy>
+        <value/>
+        <value_action/>
         <visible>ignore</visible>
     </sys_ui_policy_action>
+    <sys_translated_text action="delete_multiple" query="documentkey=1ce5398083145610235c55a6feaad3ec"/>
 </record_update>

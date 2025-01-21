@@ -2,7 +2,7 @@
     <sys_dictionary action="INSERT_OR_UPDATE" element="mid_server_script_file" table="x_108443_sndml_database_agent">
         <active>true</active>
         <array>false</array>
-        <attributes>encode_utf8=false</attributes>
+        <attributes>edge_encryption_enabled=true,encode_utf8=false</attributes>
         <audit>false</audit>
         <calculation/>
         <choice/>
@@ -49,7 +49,6 @@
         <sys_class_name>sys_dictionary</sys_class_name>
         <sys_created_by>gflewis</sys_created_by>
         <sys_created_on>2024-05-26 16:32:00</sys_created_on>
-        <sys_id>63b7321b935a4210299e7fbcebba1094</sys_id>
         <sys_name>MID Server Script File</sys_name>
         <sys_package display_value="DataPump" source="x_108443_sndml">f2e68ad32f7d60103152c886f699b6fb</sys_package>
         <sys_policy/>

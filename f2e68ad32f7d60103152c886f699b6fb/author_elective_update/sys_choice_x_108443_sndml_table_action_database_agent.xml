@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update>
-    <sys_choice action="INSERT_OR_UPDATE" field="database_agent" table="x_108443_sndml_database_table" version="3">
+    <sys_choice action="INSERT_OR_UPDATE" field="database_agent" table="x_108443_sndml_table_action" version="3">
         <sys_choice_set action="INSERT_OR_UPDATE">
             <element>database_agent</element>
-            <name>x_108443_sndml_database_table</name>
+            <name>x_108443_sndml_table_action</name>
             <sys_class_name>sys_choice_set</sys_class_name>
             <sys_created_by>gflewis</sys_created_by>
-            <sys_created_on>2021-01-24 16:00:56</sys_created_on>
-            <sys_id>0930dadb2f7d60103152c886f699b6c9</sys_id>
+            <sys_created_on>2021-01-24 16:33:51</sys_created_on>
             <sys_mod_count>0</sys_mod_count>
             <sys_name>database_agent</sys_name>
             <sys_package display_value="DataPump" source="x_108443_sndml">f2e68ad32f7d60103152c886f699b6fb</sys_package>
             <sys_policy/>
             <sys_scope display_value="DataPump">f2e68ad32f7d60103152c886f699b6fb</sys_scope>
-            <sys_update_name>sys_choice_x_108443_sndml_database_table_database_agent</sys_update_name>
+            <sys_update_name>sys_choice_x_108443_sndml_table_action_database_agent</sys_update_name>
             <sys_updated_by>gflewis</sys_updated_by>
-            <sys_updated_on>2021-01-24 16:00:56</sys_updated_on>
+            <sys_updated_on>2021-01-24 16:33:51</sys_updated_on>
         </sys_choice_set>
     </sys_choice>
 </record_update>

@@ -3,6 +3,8 @@
         <cleared>false</cleared>
         <disabled>true</disabled>
         <field>script</field>
+        <field_message/>
+        <field_message_type/>
         <mandatory>ignore</mandatory>
         <sys_class_name>sys_ui_policy_action</sys_class_name>
         <sys_created_by>gflewis</sys_created_by>
@@ -18,6 +20,9 @@
         <sys_updated_on>2021-02-27 19:36:09</sys_updated_on>
         <table>x_108443_sndml_action_schedule</table>
         <ui_policy display_value="Schedule Script readonly">d667825a2f22601045ea802df699b698</ui_policy>
+        <value/>
+        <value_action/>
         <visible>ignore</visible>
     </sys_ui_policy_action>
+    <sys_translated_text action="delete_multiple" query="documentkey=4f77065a2f22601045ea802df699b658"/>
 </record_update>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sys_index">
     <sys_index action="INSERT_OR_UPDATE">
+        <access_method/>
         <col_name_string>name</col_name_string>
         <index_col_name element="name" name="x_108443_sndml_database_agent">c145976f2fb9a0103152c886f699b605</index_col_name>
         <logical_table_name>x_108443_sndml_database_agent</logical_table_name>

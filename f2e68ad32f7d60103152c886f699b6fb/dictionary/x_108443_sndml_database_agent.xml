@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element audit="true" db_object_id="64459b632ff9a0103152c886f699b664" label="Agent" max_length="40" name="x_108443_sndml_database_agent" type="collection">
+        <element attributes="edge_encryption_enabled=true" choice="1" label="Job Run Autostart" max_length="40" name="action_run_autostart" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="HTTP Server" sequence="10" value="http_server"/>
+                <element inactive_on_update="false" label="MID Server" sequence="20" value="mid_server"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true" label="HTTP Server Port" max_length="40" name="http_server_port" type="integer"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" label="MID Server Type" max_length="40" name="mid_server_interpreter" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Linux" sequence="0" value="/bin/sh"/>
+                <element inactive_on_update="false" label="Windows" sequence="1" value="powershell"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="MID Server Script File" max_length="32" name="mid_server_script_file" reference="ecc_agent_script_file" reference_qual="parent=3171ba13935a4210299e7fbcebba1090^EQ" reference_qual_condition="parent=3171ba13935a4210299e7fbcebba1090^EQ" type="reference"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="MID Server" max_length="32" name="mid_server" reference="ecc_agent" type="reference"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Job fail template" max_length="32" name="job_fail_template" reference="sys_template" type="reference"/>
+        <element attributes="no_audit=true" label="Last check-in" max_length="40" name="last_checkin" read_only="true" type="glide_date_time"/>
+        <element display="true" label="Name" max_length="40" name="name" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="HTTP Server Host" max_length="100" name="http_server_host" type="string"/>
+        <index name="index">
+            <element name="job_fail_template"/>
+        </index>
+        <index name="index2">
+            <element name="mid_server"/>
+        </index>
+        <index name="index3">
+            <element name="mid_server_script_file"/>
+        </index>
+        <index name="index4" unique="true">
+            <element name="name"/>
+        </index>
+    </element>
+</database>

@@ -52,7 +52,6 @@
         <sys_class_name>sys_dictionary</sys_class_name>
         <sys_created_by>gflewis</sys_created_by>
         <sys_created_on>2021-01-24 16:41:58</sys_created_on>
-        <sys_id>e31916172fbd60103152c886f699b657</sys_id>
         <sys_name>Job</sys_name>
         <sys_package display_value="DataPump" source="x_108443_sndml">f2e68ad32f7d60103152c886f699b6fb</sys_package>
         <sys_policy/>

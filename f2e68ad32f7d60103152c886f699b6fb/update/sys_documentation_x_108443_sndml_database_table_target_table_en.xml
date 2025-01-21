@@ -11,7 +11,6 @@
             <sys_class_name>sys_documentation</sys_class_name>
             <sys_created_by>gflewis</sys_created_by>
             <sys_created_on>2021-01-24 15:23:48</sys_created_on>
-            <sys_id>c1b7c6972f7d60103152c886f699b68d</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_name>Target table</sys_name>
             <sys_package display_value="DataPump" source="x_108443_sndml">f2e68ad32f7d60103152c886f699b6fb</sys_package>

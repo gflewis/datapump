@@ -11,7 +11,6 @@
             <sys_class_name>sys_documentation</sys_class_name>
             <sys_created_by>gflewis</sys_created_by>
             <sys_created_on>2021-04-20 18:52:08</sys_created_on>
-            <sys_id>af10790b07a72010e542f96d7c1ed0a5</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_name>Job fail template</sys_name>
             <sys_package display_value="DataPump" source="x_108443_sndml">f2e68ad32f7d60103152c886f699b6fb</sys_package>

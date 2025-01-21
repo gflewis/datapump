@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="93067b462faa201045ea802df699b68a" label="Schedule Run" max_length="40" name="x_108443_sndml_schedule_run" type="collection">
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Schedule" mandatory="true" max_length="32" name="schedule" read_only="true" reference="x_108443_sndml_action_schedule" reference_cascade_rule="delete" type="reference"/>
+        <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
+        <index name="index">
+            <element name="schedule"/>
+        </index>
+    </element>
+</database>

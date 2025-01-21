@@ -3,6 +3,8 @@
         <cleared>false</cleared>
         <disabled>ignore</disabled>
         <field>mid_server</field>
+        <field_message/>
+        <field_message_type/>
         <mandatory>ignore</mandatory>
         <sys_class_name>sys_ui_policy_action</sys_class_name>
         <sys_created_by>gflewis</sys_created_by>
@@ -17,7 +19,10 @@
         <sys_updated_by>gflewis</sys_updated_by>
         <sys_updated_on>2024-08-23 19:23:14</sys_updated_on>
         <table>x_108443_sndml_database_agent</table>
-        <ui_policy display_value="MID Server Visible">4e02b90c83d05610235c55a6feaad317</ui_policy>
+        <ui_policy display_value="MID Server field Visible">4e02b90c83d05610235c55a6feaad317</ui_policy>
+        <value/>
+        <value_action/>
         <visible>true</visible>
     </sys_ui_policy_action>
+    <sys_translated_text action="delete_multiple" query="documentkey=6c64710083145610235c55a6feaad34a"/>
 </record_update>

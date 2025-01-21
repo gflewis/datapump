@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element audit="true" db_object_id="547882d72f7d60103152c886f699b6ed" label="Job" max_length="40" name="x_108443_sndml_table_action" type="collection">
+        <element label="SQL" max_length="4000" name="sql" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="Truncate" max_length="40" name="truncate" type="boolean"/>
+        <element display="true" label="Job Name" max_length="100" name="name" type="string"/>
+        <element attributes="edge_encryption_enabled=true" default="true" label="Active" max_length="40" name="active" type="boolean"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" label="Partition" max_length="40" name="partition" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Hour" sequence="5" value="hour"/>
+                <element inactive_on_update="false" label="Year" sequence="0" value="year"/>
+                <element inactive_on_update="false" label="Week" sequence="3" value="week"/>
+                <element inactive_on_update="false" label="Day" sequence="4" value="day"/>
+                <element inactive_on_update="false" label="Quarter" sequence="1" value="quarter"/>
+                <element inactive_on_update="false" label="Month" sequence="2" value="month"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true" hint="An error will be reported if the number of records processed is less than this value." label="Min Rows" max_length="40" name="min_rows" type="integer"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Table" max_length="32" name="table" reference="x_108443_sndml_database_table" reference_cascade_rule="delete" type="reference"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Schedule" max_length="32" name="schedule" reference="x_108443_sndml_action_schedule" reference_cascade_rule="clear" reference_qual="javascript:&quot;database_agent=&quot;+current.database_agent" type="reference" use_reference_qualifier="advanced"/>
+        <element attributes="edge_encryption_enabled=true" hint="If checked, then only process records updated since the Last Run Start value for this table" label="Since last" max_length="40" name="since_last" type="boolean"/>
+        <element attributes="edge_encryption_enabled=true" default="100" hint="Affects execution sequence if a Schedule is specified. Jobs with a lower Order must complete before jobs with a higher Order can start." label="Order" max_length="40" name="order" type="integer"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" label="Action type" mandatory="true" max_length="40" name="action_type" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Insert" sequence="0" value="insert"/>
+                <element inactive_on_update="false" label="Execute" sequence="3" value="execute"/>
+                <element inactive_on_update="false" label="Create" sequence="4" value="create"/>
+                <element inactive_on_update="false" label="Upsert" sequence="1" value="update"/>
+                <element inactive_on_update="false" label="Sync" sequence="2" value="sync"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Database agent" max_length="32" name="database_agent" reference="x_108443_sndml_database_agent" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" hint="An error will be reported if the number of records processed exceeds this value." label="Max Rows" max_length="40" name="max_rows" type="integer"/>
+        <element attributes="edge_encryption_enabled=true" hint="Set to a value between 2 and 8 to cause partitions to be loaded concurrently" label="Threads" max_length="40" name="threads" type="integer"/>
+        <index name="index">
+            <element name="database_agent"/>
+        </index>
+        <index name="index2">
+            <element name="schedule"/>
+        </index>
+        <index name="index3">
+            <element name="table"/>
+        </index>
+    </element>
+</database>

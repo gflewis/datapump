@@ -3,6 +3,8 @@
         <cleared>true</cleared>
         <disabled>ignore</disabled>
         <field>since_last</field>
+        <field_message/>
+        <field_message_type/>
         <mandatory>ignore</mandatory>
         <sys_class_name>sys_ui_policy_action</sys_class_name>
         <sys_created_by>gflewis</sys_created_by>
@@ -17,7 +19,10 @@
         <sys_updated_by>gflewis</sys_updated_by>
         <sys_updated_on>2021-03-24 13:58:32</sys_updated_on>
         <table>x_108443_sndml_table_action</table>
-        <ui_policy display_value="Hide Since Last unless Update">cb11efce2f4220103152c886f699b62b</ui_policy>
+        <ui_policy display_value="Hide Since Last unless Upsert">cb11efce2f4220103152c886f699b62b</ui_policy>
+        <value/>
+        <value_action/>
         <visible>false</visible>
     </sys_ui_policy_action>
+    <sys_translated_text action="delete_multiple" query="documentkey=d23123022f8220103152c886f699b6d1"/>
 </record_update>

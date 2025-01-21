@@ -9,7 +9,6 @@
         <create_access>false</create_access>
         <create_access_controls>true</create_access_controls>
         <delete_access>false</delete_access>
-        <extension_model/>
         <is_extendable>false</is_extendable>
         <label>Schedule</label>
         <live_feed_enabled>false</live_feed_enabled>
@@ -18,10 +17,8 @@
         <provider_class/>
         <read_access>true</read_access>
         <scriptable_table>false</scriptable_table>
-        <super_class display_value="Scheduled Script Execution" name="sysauto_script">29807780c923101091f9f06464832702</super_class>
-        <sys_class_code/>
+        <super_class display_value="Scheduled Script Execution" name="sysauto_script">d0a50f53d12302104f34ba60d8b7c147</super_class>
         <sys_class_name>sys_db_object</sys_class_name>
-        <sys_class_path/>
         <sys_created_by>gflewis</sys_created_by>
         <sys_created_on>2021-01-24 16:06:57</sys_created_on>
         <sys_id>de411e5f2f7d60103152c886f699b6b4</sys_id>

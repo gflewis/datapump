@@ -16,6 +16,7 @@
         <logo/>
         <menu display_value="DataPump">085742972f7d60103152c886f699b6d3</menu>
         <name>DataPump</name>
+        <package_json/>
         <private>false</private>
         <restrict_table_access>false</restrict_table_access>
         <runtime_access_tracking>permissive</runtime_access_tracking>

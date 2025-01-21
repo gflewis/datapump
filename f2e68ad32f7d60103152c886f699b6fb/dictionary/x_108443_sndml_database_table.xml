@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element audit="true" db_object_id="ac6742d32f3d60103152c886f699b618" label="Database Table" max_length="40" name="x_108443_sndml_database_table" type="collection">
+        <element attributes="no_audit=true" label="Last run start" max_length="40" name="last_run_start" type="glide_date_time"/>
+        <element attributes="edge_encryption_enabled=true" dependent="source_table" dependent_on_field="source_table" label="Filter" max_length="4000" name="filter" type="conditions" use_dependent_field="true"/>
+        <element label="Current run start" max_length="40" name="current_run_start" type="glide_date_time"/>
+        <element attributes="base_start=true,edge_encryption_enabled=true" label="Source table" mandatory="true" max_length="80" name="source_table" type="table_name"/>
+        <element active="false" attributes="edge_encryption_enabled=true" choice="1" label="Partition" max_length="40" name="partition" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Hour" sequence="5" value="hour"/>
+                <element inactive_on_update="false" label="Quarter" sequence="1" value="quarter"/>
+                <element inactive_on_update="false" label="Week" sequence="3" value="week"/>
+                <element inactive_on_update="false" label="Year" sequence="0" value="year"/>
+                <element inactive_on_update="false" label="Month" sequence="2" value="month"/>
+                <element inactive_on_update="false" label="Day" sequence="4" value="day"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true,is_multi_text=false" dependent="source_table" dependent_on_field="source_table" label="Columns" max_length="4000" name="columns" type="field_list" use_dependent_field="true"/>
+        <element display="true" label="Target table" mandatory="true" max_length="100" name="target_table" type="string"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false,no_audit=true" label="Current run" max_length="32" name="current_run" reference="x_108443_sndml_action_run" type="reference"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false,no_audit=true" label="Last run" max_length="32" name="last_run" reference="x_108443_sndml_action_run" type="reference"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Database agent" mandatory="true" max_length="32" name="database_agent" reference="x_108443_sndml_database_agent" reference_cascade_rule="restrict" type="reference"/>
+        <element hint="Only load records created on or after this date. Records created BEFORE this date will NOT be loaded." label="Created start" max_length="40" name="created_start" type="glide_date_time"/>
+        <element hint="Only load records created before this date. Records created ON OR AFTER this date will NOT be loaded." label="Created until" max_length="40" name="created_until" type="glide_date_time"/>
+        <element attributes="edge_encryption_enabled=true" label="Page size" max_length="40" name="page_size" type="integer"/>
+        <index name="index">
+            <element name="current_run"/>
+        </index>
+        <index name="index2">
+            <element name="database_agent"/>
+        </index>
+        <index name="index3">
+            <element name="last_run"/>
+        </index>
+    </element>
+</database>

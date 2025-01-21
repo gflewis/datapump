@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="63ab62932ffd60103152c886f699b66d" label="Job Run Log" max_length="40" name="x_108443_sndml_action_run_log" type="collection">
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Action run" max_length="32" name="action_run" read_only="true" reference="x_108443_sndml_action_run" reference_cascade_rule="delete" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" label="Records inserted" max_length="40" name="records_inserted" read_only="true" type="integer"/>
+        <element attributes="edge_encryption_enabled=true" label="Records skipped" max_length="40" name="records_skipped" type="integer"/>
+        <element attributes="edge_encryption_enabled=true" label="Records updated" max_length="40" name="records_updated" read_only="true" type="integer"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Run Part" max_length="32" name="run_part" read_only="true" reference="x_108443_sndml_action_run_part" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" label="Records deleted" max_length="40" name="records_deleted" read_only="true" type="integer"/>
+        <index name="index">
+            <element name="action_run"/>
+        </index>
+        <index name="index2">
+            <element name="run_part"/>
+        </index>
+    </element>
+</database>

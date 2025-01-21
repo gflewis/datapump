@@ -54,7 +54,7 @@
 	}
 
 })(request, response);]]></operation_script>
-        <operation_uri>/api/x_108443_sndml/jobrun</operation_uri>
+        <operation_uri>/api/x_108443_sndml/jobrunconfig</operation_uri>
         <produces>application/json,application/xml,text/xml</produces>
         <produces_customized>false</produces_customized>
         <relative_path>/</relative_path>
@@ -75,7 +75,7 @@
         <sys_update_name>sys_ws_operation_efcc0b9493430210299e7fbcebba10fa</sys_update_name>
         <sys_updated_by>gflewis</sys_updated_by>
         <sys_updated_on>2024-08-11 16:51:39</sys_updated_on>
-        <web_service_definition display_value="JobRun">8faccb5493430210299e7fbcebba10ff</web_service_definition>
+        <web_service_definition display_value="JobRunConfig">8faccb5493430210299e7fbcebba10ff</web_service_definition>
         <web_service_version/>
     </sys_ws_operation>
 </record_update>

@@ -6,7 +6,6 @@
             <sys_class_name>sys_choice_set</sys_class_name>
             <sys_created_by>gflewis</sys_created_by>
             <sys_created_on>2021-01-24 20:55:35</sys_created_on>
-            <sys_id>99a3971f2f31a0103152c886f699b689</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_name>partition</sys_name>
             <sys_package display_value="DataPump" source="x_108443_sndml">f2e68ad32f7d60103152c886f699b6fb</sys_package>
@@ -25,11 +24,11 @@
             <language>en</language>
             <name>x_108443_sndml_database_table</name>
             <sequence>0</sequence>
+            <synonyms/>
             <sys_created_by>gflewis</sys_created_by>
             <sys_created_on>2021-03-23 20:41:24</sys_created_on>
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
-            <sys_id>c39cb1821b43a010ff8e7596cc4bcb2f</sys_id>
             <sys_mod_count>1</sys_mod_count>
             <sys_updated_by>gflewis</sys_updated_by>
             <sys_updated_on>2021-03-23 20:41:39</sys_updated_on>
@@ -44,11 +43,11 @@
             <language>en</language>
             <name>x_108443_sndml_database_table</name>
             <sequence>1</sequence>
+            <synonyms/>
             <sys_created_by>gflewis</sys_created_by>
             <sys_created_on>2021-01-24 20:55:35</sys_created_on>
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
-            <sys_id>5a939f1f2f31a0103152c886f699b651</sys_id>
             <sys_mod_count>2</sys_mod_count>
             <sys_updated_by>gflewis</sys_updated_by>
             <sys_updated_on>2021-01-24 20:55:48</sys_updated_on>
@@ -63,11 +62,11 @@
             <language>en</language>
             <name>x_108443_sndml_database_table</name>
             <sequence>2</sequence>
+            <synonyms/>
             <sys_created_by>gflewis</sys_created_by>
             <sys_created_on>2021-01-24 20:55:43</sys_created_on>
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
-            <sys_id>d5a39f1f2f31a0103152c886f699b652</sys_id>
             <sys_mod_count>2</sys_mod_count>
             <sys_updated_by>gflewis</sys_updated_by>
             <sys_updated_on>2021-01-24 20:55:50</sys_updated_on>
@@ -82,11 +81,11 @@
             <language>en</language>
             <name>x_108443_sndml_database_table</name>
             <sequence>3</sequence>
+            <synonyms/>
             <sys_created_by>gflewis</sys_created_by>
             <sys_created_on>2021-01-24 20:56:01</sys_created_on>
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
-            <sys_id>75b3d35f2f31a0103152c886f699b632</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_updated_by>gflewis</sys_updated_by>
             <sys_updated_on>2021-01-24 20:56:01</sys_updated_on>
@@ -101,11 +100,11 @@
             <language>en</language>
             <name>x_108443_sndml_database_table</name>
             <sequence>4</sequence>
+            <synonyms/>
             <sys_created_by>gflewis</sys_created_by>
             <sys_created_on>2021-01-24 20:56:20</sys_created_on>
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
-            <sys_id>eec3935f2f31a0103152c886f699b6c1</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_updated_by>gflewis</sys_updated_by>
             <sys_updated_on>2021-01-24 20:56:20</sys_updated_on>
@@ -120,11 +119,11 @@
             <language>en</language>
             <name>x_108443_sndml_database_table</name>
             <sequence>5</sequence>
+            <synonyms/>
             <sys_created_by>gflewis</sys_created_by>
             <sys_created_on>2021-01-24 20:56:30</sys_created_on>
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
-            <sys_id>35d3935f2f31a0103152c886f699b6ea</sys_id>
             <sys_mod_count>2</sys_mod_count>
             <sys_updated_by>gflewis</sys_updated_by>
             <sys_updated_on>2021-01-24 20:56:34</sys_updated_on>

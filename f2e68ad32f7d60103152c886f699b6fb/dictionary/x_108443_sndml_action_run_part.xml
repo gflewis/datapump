@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="c00e965b2fbd60103152c886f699b6c8" label="Job Run Part" max_length="40" name="x_108443_sndml_action_run_part" type="collection">
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Job run" max_length="32" name="action_run" read_only="true" reference="x_108443_sndml_action_run" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" label="Records deleted" max_length="40" name="records_deleted" read_only="true" type="integer"/>
+        <element attributes="edge_encryption_enabled=true" label="Records expected" max_length="40" name="records_expected" read_only="true" type="integer"/>
+        <element attributes="edge_encryption_enabled=true" label="Records skipped" max_length="40" name="records_skipped" read_only="true" type="integer"/>
+        <element attributes="edge_encryption_enabled=true" label="Records inserted" max_length="40" name="records_inserted" read_only="true" type="integer"/>
+        <element attributes="edge_encryption_enabled=true" label="Records updated" max_length="40" name="records_updated" read_only="true" type="integer"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" label="Status" max_length="40" name="status" read_only="true" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Running" sequence="2" value="running"/>
+                <element inactive_on_update="false" label="Complete" sequence="3" value="complete"/>
+                <element inactive_on_update="false" label="Prepare" sequence="1" value="prepare"/>
+            </choice>
+        </element>
+        <element display="true" label="Partition" max_length="40" name="part_name" read_only="true" type="string"/>
+        <index name="index">
+            <element name="action_run"/>
+        </index>
+    </element>
+</database>

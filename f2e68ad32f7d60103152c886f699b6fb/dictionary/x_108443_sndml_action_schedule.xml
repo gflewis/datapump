@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element audit="true" db_object_id="de411e5f2f7d60103152c886f699b6b4" extends="sysauto_script" label="Schedule" max_length="40" name="x_108443_sndml_action_schedule" type="collection">
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Agent" mandatory="true" max_length="32" name="database_agent" reference="x_108443_sndml_database_agent" type="reference"/>
+        <index name="index">
+            <element name="database_agent"/>
+        </index>
+    </element>
+</database>

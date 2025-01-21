@@ -19,7 +19,7 @@
         <sys_updated_by>gflewis</sys_updated_by>
         <sys_updated_on>2024-05-12 16:42:48</sys_updated_on>
         <table>x_108443_sndml_database_agent</table>
-        <ui_policy display_value="Show for HTTP Server">44d3b27e838a06103bb15130ceaad3c3</ui_policy>
+        <ui_policy display_value="AutoStart HTTP Server fields">44d3b27e838a06103bb15130ceaad3c3</ui_policy>
         <value/>
         <value_action>ignore</value_action>
         <visible>true</visible>
