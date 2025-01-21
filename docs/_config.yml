@@ -2,9 +2,10 @@ title: Site title appears here.
 description: Blah blah description. Blah Blah description.
 lsi: false
 safe: true
-source: [your repo's top level directory]
+source: docs
 incremental: false
 highlighter: rouge
+show_downloads: false
 gist:
   noscript: false
 kramdown:
