@@ -137,7 +137,7 @@ On your Linux or Windows server, type the following command
 
     java -ea -jar <jarfilename> -p <profilename> --scan
 
-The **--scan** command looks for any **Job Run** records that are **Ready**,
+The `--scan` command looks for any **Job Run** records that are **Ready**,
 and executes them.
 As the job runs, the **Job Run** record will be updated,
 and rows will be appended to the **Job Run Logs** related list.
