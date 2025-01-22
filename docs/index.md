@@ -6,10 +6,12 @@ description: Exporting ServiceNow data to Oracle, SQL Server, MySQL or PostgreSQ
 DataPump is a contributed application which can be used to export ServiceNow data to 
 Oracle, Microsoft SQL Server, MySQL or PostgreSQL. This application has two parts:
 
-* A scoped ServiceNow app (**x_108443_sndml**) which is used to configure and manage export jobs. 
-* A Java application (_a.k.a._ agent) which runs the exports. 
+* A scoped ServiceNow app (**x_108443_sndml**) which is installed in the ServiceNow instance.
+  This application is used to configure and manage the export jobs.
+* A Java application which runs the exports. 
+  This application is executed on a Linux or Windows server.
 
-The application can be downloaded from 
+Both parts can be downloaded from 
 [https://github.com/gflewis/sndml3/releases](https://github.com/gflewis/sndml3/releases).
 
 Beginning with Release 3.5.0.10, the **Assets** section of the release will contain 
@@ -82,12 +84,22 @@ Before configuring the Agent, it is a good idea to run a quick connectivity test
 This will verify that the profile contain valid credentials,
 and that the Java program can write to the SQL database.
 
-Use the appropriate JAR file
+For this test, you should choose a table that has some data, but is not too large.
+**cmdb_ci_service** or **cmn_location** are usually good tables for this initial testing.
 
-    java -jar <jarfilename> -p <profilename> -t <tablename>
+Using the appropriate JAR file, type the following command:
 
-<blockquote><code>java -jar </code><i><b><small>jarfilename</small></b></i><code> -p </code><i><b><small>profilename</small></b></i><code> -t </code><i><b><small>tablename</small></b></i></blockquote>
+    java -ea -jar <jarfilename> -p <profilename> -t <tablename>
 
+The Java program should connect to the ServiceNow instance and the SQL database,
+create a table in the database schema,
+and copy the ServiceNow data into the target table.
+
+If you run the command a second time, the the `CREATE TABLE` will be missing.
+When SNDML starts a job, 
+it first check to see if the target table exists in the schema.
+The program will issue a `CREATE TABLE` statement only if
+there is no existing table with the correct name in the target schema.
 
 ## Create a Database Agent Record
 
