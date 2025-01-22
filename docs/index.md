@@ -2,20 +2,21 @@
 title: Getting started with DataPump 3.5
 description: Exporting ServiceNow data to Oracle, SQL Server, MySQL or PostgreSQL with SNDML 3.5 and the DataPump App
 ---
+## Introduction
 
 DataPump is a contributed application which can be used to export ServiceNow data to 
 Oracle, Microsoft SQL Server, MySQL or PostgreSQL. This application has two parts:
 
-* A scoped ServiceNow app (**x_108443_sndml**) which is installed in the ServiceNow instance.
-  This application is used to configure and manage the export jobs.
-* A Java application which runs the exports. 
+* A Java application (Java agent) which runs the exports. 
   This application is executed on a Linux or Windows server.
+* A scoped ServiceNow app (**x_108443_sndml**) which is installed in the ServiceNow instance.
+  This application is used to configure the agent and manage the export jobs.
 
 Both parts can be downloaded from 
 [https://github.com/gflewis/sndml3/releases](https://github.com/gflewis/sndml3/releases).
 
 Beginning with Release 3.5.0.10, the **Assets** section of the release will contain 
-a ZIP file containing the following:
+a ZIP file with the following:
 * **DataPump-v3.5.x.x-Install.xml** - _Update Set to install the ServiceNow app_
 * **sndml-3.5.x.x-mssql.jar** - _JAR file for use with Microsoft SQL Server_
 * **sndml-3.5.x.x-mysql.jar** - _JAR file for use with MySQL_
@@ -25,33 +26,36 @@ a ZIP file containing the following:
 ## Create Users and Grant Roles
 
 After installing the Update Set in your instance, 
-the first step will be to create two new ServiceNow users 
+the first step is to create two new ServiceNow users 
 which will be used by the Java agent.
 
 #### datapump.agent
-This account will be used to communicated with the DataPump scoped app 
-and update the status of running jobs.
-* Assign the user a randomly generated password
-* Set the time zone to **GMT**
-* Grant the fole **x_108443_sndml.daemon**
+This account will be used to retrieve configuration information from the DataPump scoped app 
+and to update the status of running jobs.
+* Set **Time zone** to **GMT**
+* Set **Web service access only** to **true**
+* Grant **x_108443_sndml.daemon** role
+* Assign the user a secure password which will be entered int the Connection Profile below
 
 #### datapump.reader
-This account will be used to export data from the instance
-and requires "read" access to any tables which will be exported.
-* Assign the user a randomly generated password
-* Set the time zone to **GMT**
-* Grant the role **snc_read_only**
-* Grant the role **soap_query**
+This account will be used to export data from the instance.
+It requires "read" access to any tables which will be exported.
+* Set **Time zone** to **GMT**
+* Set **Web service access only** to **true**
+* Grant **snc_read_only** role
+* Grant **soap_query** role
 * Grant **itil** role and/or any roles necessary to read the requisite tables.
+* Assign the user a secure password which will be entered int the Connection Profile below
 
+Do not grant  **x_108443_sndml.admin** role to either of these service accounts.
 Users with **x_108443_sndml.admin** role can configure and monitor DataPump jobs.
 
 ## Create a Connection Profile
 
-The connection profile is a Java properties file that contains 
+The **Connection Profile** is a Java properties file that contains 
 credentials for the database and the ServiceNow instance, 
 as well as other parameters that affect processing. 
-The connection profile looks like this:
+The Connection Profile looks like this:
 
 ```
 database.url=jdbc:mysql://name-of-database-host/myschema
@@ -69,8 +73,8 @@ reader.username=datapump.reader
 reader.password=******
 ```
 
-Since the connection profile contains passwords, 
-it should be in a secure location on your Linux or Windows server.
+Since the **Connection Profile** contains passwords, 
+it should be in a secured location on your Linux or Windows server.
 
 The format of **database.url** will vary based on whether you are using 
 MySQL, PostgreSQL, Oracle or Microsoft SQL Server. 
@@ -85,13 +89,14 @@ This will verify that the profile contain valid credentials,
 and that the Java program can write to the SQL database.
 
 For this test, you should choose a table that has some data, but is not too large.
-**cmdb_ci_service** or **cmn_location** are usually good tables for this initial testing.
+Good tables for this test might include 
+**cmdb_ci_service** or **cmn_location**.
 
 Using the appropriate JAR file, type the following command:
 
     java -ea -jar <jarfilename> -p <profilename> -t <tablename>
 
-The Java program should connect to the ServiceNow instance and the SQL database,
+The Java program should connect to ServiceNow and to the database,
 create a table in the database schema,
 and copy the ServiceNow data into the target table.
 
@@ -101,6 +106,8 @@ it first check to see if the target table exists in the schema.
 The program will issue a `CREATE TABLE` statement only if
 there is no existing table with the correct name in the target schema.
 
+If everything works successfully, then we can begin to configure the agent.
+
 ## Create a Database Agent Record
 
 In your ServiceNow instance, go to **DataPump > Agents** and click **New**. 
@@ -108,16 +115,34 @@ Create a new Database Agent record with the name "main".
 
 ## Configure a Database Table and a Job
 
-For initial testing, choose a ServiceNow table which has a small number of records.
+For the first test of the agent, you should again choose a ServiceNow table 
+which has a small number of records.
 
-1. Go to **DataPump > Agent**s.
+1. Go to **DataPump > Agents**.
 2. Open the "main" agent configured above.
 3. Click the **New** button above the **Tables** related list.
-4. Select a **Source** table.
+4. Select a **Source table**.
 5. **Save** the record.
 6. Click the **New** button above the **Jobs** related list.
 7. For **Action type** select "Insert".
 8. **Save** the record.
+9. Click the **Execute Now** button.
+
+This newly created **Job Run** record has a status of **Ready**.
+It is waiting to be executed by the Java agent.
+
+## Run an SNDML Scan
+
+On your Linux or Windows server, type the following command
+
+    java -ea -jar <jarfilename> -p <profilename> --scan
+
+The **--scan** command looks for any **Job Run** records that are **Ready**,
+and executes them.
+As the job runs, the **Job Run** record will be updated,
+and rows will be appended to the **Job Run Logs** related list.
+
+## Run an SNDML Daemon
 
 ## Action Types
 There are several types of jobs.
