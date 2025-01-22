@@ -137,16 +137,27 @@ It is waiting to be executed by the Java agent.
 
 ## Run an SNDML Scan
 
-On your Linux or Windows server, type the following command
+On your Linux or Windows server, type this command:
 
     java -ea -jar <jarfilename> -p <profilename> --scan
 
 The `--scan` command looks for any **Job Run** records that are **Ready**,
 and executes them.
+
 As the job executes, the **Job Run** record will be updated,
 and rows will be appended to the **Job Run Logs** related list.
 
+When each job completes, `--scan` checks for new **Job Run** records that are **Ready**.
+If none are found then the Java program terminates.
+
 ## Run an SNDML Daemon
+
+To scan for jobs in an infinite loop, execute SNDML in **daemon** mode using this command:
+
+    java -ea -jar <jarfilename> -p <profilename> --daemon
+    
+By default, `--daemon` will scan for new jobs every 2 minutes. 
+This can be changed by setting the value of the **Connection Profile** property `daemon.interval_seconds`.
 
 ## Action Types
 There are several types of jobs.

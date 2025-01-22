@@ -1,6 +1,6 @@
 ---
-title: Scheduling database exports with DataPump 3.5
-description: How to schedule jobs to be automatically run after they have been created and tested
+title: Scheduling exports with DataPump 3.5
+description: Using ServiceNow schedules and SNDML 3.5 to automatically export to Oracle, SQL Server, MySQL or PostgreSQL
 ---
 ## Creating Schedules
 DataPump jobs can be grouped together in **Schedules**, and 
@@ -13,6 +13,10 @@ The steps are as follows:
 3. The **Job** must be saved before it can be added to a Schedule. 
    To add a **Job** to a **Schedule**, edit the **Schedule** field on the **Job** form.
 4. To test a Schedule, open the Schedule form and click the **Execute Now** button.
+
+Since the DataPump table `x_108443_sndml_action_schedule` is extended from the 
+out-of-box table **Scheduled Script Execution**,
+Schedules can be configured to run at any frequency permitted by ServiceNow.
 
 If a **Job** is part of a **Schedule**, then the **Order** field on the Job form becomes important. 
 Jobs within a Schedule are processed in order, based on the Order field. 
@@ -28,7 +32,8 @@ The table **sys_user_grmember** will be exported after the other two jobs comple
 
 All Jobs within a Schedule will have the same "start time", regardless of when they actually start running. 
 The Java agent will only export records that were inserted before the "start time". 
-"Start time" is based on when the **Job Run** record was created, not when the **Status** was changed to "Running". 
+"Start time" is based on when the **Job Run** record was created, 
+not when the **Status** was changed to "Running". 
 All **Job Run** records in a **Schedule Run** are created at the same time, 
 therefore the application will not export records inserted after the start of another job in the same schedule.
 
