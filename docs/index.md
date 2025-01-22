@@ -29,7 +29,7 @@ After installing the Update Set in your instance,
 the first step is to create two new ServiceNow users 
 which will be used by the Java agent.
 
-#### datapump.agent
+### datapump.agent
 This account will be used to retrieve configuration information from the DataPump scoped app 
 and to update the status of running jobs.
 * Set **Time zone** to **GMT**
@@ -37,7 +37,7 @@ and to update the status of running jobs.
 * Grant **x_108443_sndml.daemon** role
 * Assign the user a secure password which will be entered int the Connection Profile below
 
-#### datapump.reader
+### datapump.reader
 This account will be used to export data from the instance.
 It requires "read" access to any tables which will be exported.
 * Set **Time zone** to **GMT**
@@ -58,14 +58,15 @@ as well as other parameters that affect processing.
 The Connection Profile looks like this:
 
 ```
-database.url=jdbc:mysql://name-of-database-host/myschema
+database.url=jdbc:mysql://name-of-database-host/dbname
+database.schema=******
 database.username=******
 database.password=******
-database.schema=demo
 
 app.instance=dev000000
 app.username=datapump.agent
 app.password=******
+
 app.agent=main
 
 reader.instance=dev000000
@@ -80,13 +81,16 @@ The format of **database.url** will vary based on whether you are using
 MySQL, PostgreSQL, Oracle or Microsoft SQL Server. 
 Please refer to the documentation on configuring a JDBC URL based on the type of your database.
 
+The values of **appinstance** and **reader.instance** can either be a full URL (starting with `https://`)
+or an instance name.
+
 The value of **app.agent** must match the name used in the **Database Agent** record below.
 
 ## Test Connectivity
 
 Before configuring the Agent, it is a good idea to run a quick connectivity test.
 This will verify that the profile contain valid credentials,
-and that the Java program can write to the SQL database.
+and that the Java program can write to target database schema.
 
 For this test, you should choose a table that has some data, but is not too large.
 Good tables for this test might include 
@@ -139,7 +143,7 @@ On your Linux or Windows server, type the following command
 
 The `--scan` command looks for any **Job Run** records that are **Ready**,
 and executes them.
-As the job runs, the **Job Run** record will be updated,
+As the job executes, the **Job Run** record will be updated,
 and rows will be appended to the **Job Run Logs** related list.
 
 ## Run an SNDML Daemon
