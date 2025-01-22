@@ -1,6 +1,6 @@
 ---
-title: Scheduling exports with DataPump 3.5
-description: Using ServiceNow schedules and SNDML 3.5 to automatically export to Oracle, SQL Server, MySQL or PostgreSQL
+title: Scheduling Datapump Exports
+description: Using ServiceNow schedules and SNDML version 3.5 to automatically export to Oracle, SQL Server, MySQL or PostgreSQL
 ---
 ## Creating Schedules
 DataPump jobs can be grouped together in **Schedules**, and 

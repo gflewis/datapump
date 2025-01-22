@@ -1,6 +1,6 @@
 ---
-title: Getting started with DataPump 3.5
-description: Exporting ServiceNow data to Oracle, SQL Server, MySQL or PostgreSQL with SNDML 3.5 and the DataPump App
+title: Getting started with DataPump
+description: Exporting ServiceNow data to Oracle, SQL Server, MySQL or PostgreSQL with version 3.5 of SNDML and the DataPump App
 ---
 ## Introduction
 
