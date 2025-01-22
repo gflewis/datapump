@@ -3,12 +3,14 @@ title: Getting started with DataPump 3.5
 description: Exporting ServiceNow data to Oracle, SQL Server, MySQL or PostgreSQL with SNDML 3.5 and the DataPump App
 ---
 
-DataPump is a contributed application which can be used to export ServiceNow data to Oracle, Microsoft SQL Server, MySQL or PostgreSQL. This application has two parts:
+DataPump is a contributed application which can be used to export ServiceNow data to 
+Oracle, Microsoft SQL Server, MySQL or PostgreSQL. This application has two parts:
 
 * A scoped ServiceNow app (**x_108443_sndml**) which is used to configure and manage export jobs. 
 * A Java application (_a.k.a._ agent) which runs the exports. 
 
-The application can be downloaded from [https://github.com/gflewis/sndml3/releases](https://github.com/gflewis/sndml3/releases).
+The application can be downloaded from 
+[https://github.com/gflewis/sndml3/releases](https://github.com/gflewis/sndml3/releases).
 
 Beginning with Release 3.5.0.10, the **Assets** section of the release will contain 
 a ZIP file containing the following:
@@ -42,10 +44,6 @@ and requires "read" access to any tables which will be exported.
 
 Users with **x_108443_sndml.admin** role can configure and monitor DataPump jobs.
 
-## Create a Database Agent Record
-
-In your ServiceNow instance, go to **DataPump > Agents** and click New. Create a new Database Agent record with the name "main".
-
 ## Create a Connection Profile
 
 The connection profile is a Java properties file that contains 
@@ -68,8 +66,46 @@ reader.instance=dev000000
 reader.username=datapump.reader
 reader.password=******
 ```
+
 Since the connection profile contains passwords, 
 it should be in a secure location on your Linux or Windows server.
+
+The format of **database.url** will vary based on whether you are using 
+MySQL, PostgreSQL, Oracle or Microsoft SQL Server. 
+Please refer to the documentation on configuring a JDBC URL based on the type of your database.
+
+The value of **app.agent** must match the name used in the **Database Agent** record below.
+
+## Test Connectivity
+
+Before configuring the Agent, it is a good idea to run a quick connectivity test.
+This will verify that the profile contain valid credentials,
+and that the Java program can write to the SQL database.
+
+Use the appropriate JAR file
+
+    java -jar <jarfilename> -p <profilename> -t <tablename>
+
+<blockquote><code>java -jar </code><i><b><small>jarfilename</small></b></i><code> -p </code><i><b><small>profilename</small></b></i><code> -t </code><i><b><small>tablename</small></b></i></blockquote>
+
+
+## Create a Database Agent Record
+
+In your ServiceNow instance, go to **DataPump > Agents** and click **New**. 
+Create a new Database Agent record with the name "main".
+
+## Configure a Database Table and a Job
+
+For initial testing, choose a ServiceNow table which has a small number of records.
+
+1. Go to **DataPump > Agent**s.
+2. Open the "main" agent configured above.
+3. Click the **New** button above the **Tables** related list.
+4. Select a **Source** table.
+5. **Save** the record.
+6. Click the **New** button above the **Jobs** related list.
+7. For **Action type** select "Insert".
+8. **Save** the record.
 
 ## Action Types
 There are several types of jobs.
@@ -84,14 +120,14 @@ If Truncate is checked, then the SQL table will be truncated prior to the load.
 
 ### Upsert
 "Upsert" is used to load or update SQL tables. 
-If the target record exists (based on sys_id), then it will be updated. 
+If the target record exists (based on **sys_id**), then it will be updated. 
 Otherwise, it will be inserted.
 
-If Since Last is checked, then only records inserted or updated in ServiceNow since the last run 
+If **Since Last** is checked, then only records inserted or updated in ServiceNow since the last run 
 will be processed. The following filter will be used when retrieving records from ServiceNow:
-<blockquote><code>sys_updated_on>=<i>lastrunstart</i></code></blockquote>
+<blockquote><code>sys_updated_on>=</code><i><b><small>lastrunstart</small></b></i></blockquote>
 where 
-_lastrunstart_ 
+<i><b><small>lastrunstart</small></b></i>
 is determined from the "Last Run Start" field on the Database Table record.
 
 ### Sync

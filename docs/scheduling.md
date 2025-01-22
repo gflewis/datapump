@@ -1,5 +1,6 @@
 ---
 title: Scheduling database exports with DataPump 3.5
+description: How to schedule jobs to be automatically run after they have been created and tested
 ---
 ## Creating Schedules
 DataPump jobs can be grouped together in **Schedules**, and 
@@ -30,3 +31,7 @@ The Java agent will only export records that were inserted before the "start tim
 "Start time" is based on when the **Job Run** record was created, not when the **Status** was changed to "Running". 
 All **Job Run** records in a **Schedule Run** are created at the same time, 
 therefore the application will not export records inserted after the start of another job in the same schedule.
+
+## Running Scheduled Jobs
+Once a Job Run record is created with a state of "Ready", it must be be detected by the Java agent. 
+There are several techniques for managing this. 
